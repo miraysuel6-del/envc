@@ -1,63 +1,70 @@
-import { notFound } from 'next/navigation';
-import { fetchJobBySlug } from '../../../lib/sanity';
-import Link from 'next/link';
+import { fetchJobBySlug, fetchAllJobSlugs } from '../../../lib/sanity'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
-export const revalidate = 60;
+export const revalidate = 60
 
-export default async function JobDetailsPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
-  const job = await fetchJobBySlug(slug);
+export async function generateStaticParams() {
+  const jobs = await fetchAllJobSlugs()
+  return jobs.map((job: { slug: string }) => ({
+    slug: job.slug,
+  }))
+}
+
+export default async function JobDetailPage({ params }: { params: { slug: string } }) {
+  const job = await fetchJobBySlug(params.slug)
 
   if (!job) {
-    notFound();
+    notFound()
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-24">
-      <Link href="/careers" className="inline-block mb-12 text-sm hover:underline">
-        ← Back to Jobs
-      </Link>
+    <div className="min-h-screen bg-white text-black py-24">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <Link href="/careers" className="inline-block mb-8 text-sm hover:underline">
+          ← Tüm İlanlara Dön
+        </Link>
+        
+        <div className="border-b border-black pb-8 mb-8">
+          <div className="flex gap-2 mb-4">
+            <span className="border border-black px-3 py-1 text-xs uppercase font-bold">
+              {job.category}
+            </span>
+            <span className="border border-black px-3 py-1 text-xs uppercase font-bold">
+              {job.type}
+            </span>
+          </div>
+          <h1 className="text-4xl font-bold mb-4">{job.title}</h1>
+          <p className="text-xl text-gray-600">{job.company}</p>
+        </div>
 
-      <div className="mb-4">
-        {job.category && (
-          <span className="inline-block border border-black px-3 py-1 text-xs uppercase mr-2 mb-4">
-            {job.category}
-          </span>
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4 uppercase">Açıklama</h2>
+          <p className="text-gray-700 leading-relaxed">{job.description}</p>
+        </div>
+
+        {job.requirements && job.requirements.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-bold mb-4 uppercase">Aranan Nitelikler</h2>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {job.requirements.map((req: string, i: number) => (
+                <li key={i}>{req}</li>
+              ))}
+            </ul>
+          </div>
         )}
-        {job.type && (
-          <span className="inline-block border border-black px-3 py-1 text-xs uppercase mr-2 mb-4">
-            {job.type}
-          </span>
+
+        {job.applicationLink && (
+          <a
+            href={job.applicationLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-black text-white px-8 py-4 font-bold hover:bg-white hover:text-black border border-black transition-colors"
+          >
+            Başvuru Yap →
+          </a>
         )}
       </div>
-
-      <h1 className="text-4xl font-bold mb-2">{job.title}</h1>
-      <p className="text-xl text-gray-600 mb-6">{job.company}</p>
-
-      {job.description && (
-        <div className="prose prose-black max-w-none mb-8 whitespace-pre-wrap">
-          {job.description}
-        </div>
-      )}
-
-      {job.requirements && job.requirements.length > 0 && (
-        <ul className="list-disc list-outside pl-5 mb-8 marker:text-black">
-          {job.requirements.map((req: string, i: number) => (
-            <li key={i} className="mb-2 leading-relaxed">{req}</li>
-          ))}
-        </ul>
-      )}
-
-      {job.applicationLink && (
-        <a 
-          href={job.applicationLink} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-block bg-black text-white px-8 py-3 hover:bg-white hover:text-black border border-black transition"
-        >
-          Apply Now
-        </a>
-      )}
     </div>
-  );
+  )
 }

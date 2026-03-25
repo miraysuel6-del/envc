@@ -36,6 +36,32 @@ export async function fetchActiveJobs() {
 }
 
 export async function fetchJobBySlug(slug: string) {
-  const query = `*[_type == "jobPosting" && slug.current == $slug][0]`;
-  return client.fetch(query, { slug });
+  const query = `*[_type == "jobPosting" && slug.current == $slug][0] {
+    _id,
+    title,
+    company,
+    type,
+    category,
+    description,
+    requirements,
+    applicationLink,
+    "slug": slug.current
+  }`
+  return client.fetch(query, { slug })
+}
+
+export async function fetchAllJobSlugs() {
+  const query = `*[_type == "jobPosting" && isActive == true] {
+    "slug": slug.current
+  }`;
+  if (projectId === 'vw5rjq9a' && !process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    return [];
+  }
+  try {
+    const jobs = await client.fetch(query);
+    return jobs || [];
+  } catch (error) {
+    console.error("Failed to fetch slugs:", error);
+    return [];
+  }
 }
