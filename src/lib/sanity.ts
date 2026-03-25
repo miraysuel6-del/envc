@@ -36,26 +36,6 @@ export async function fetchActiveJobs() {
 }
 
 export async function fetchJobBySlug(slug: string) {
-  try {
-    const job = await client.fetch(`
-      *[_type == "jobPosting" && slug.current == $slug][0] {
-        _id,
-        title,
-        slug,
-        company,
-        type,
-        category,
-        description,
-        requirements,
-        applicationLink,
-        deadline,
-        isActive,
-        postedAt
-      }
-    `, { slug });
-    return job || null;
-  } catch (error) {
-    console.error("Failed to fetch job by slug:", error);
-    return null;
-  }
+  const query = `*[_type == "jobPosting" && slug.current == $slug][0]`;
+  return client.fetch(query, { slug });
 }
