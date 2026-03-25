@@ -12,11 +12,6 @@ export const client = createClient({
 });
 
 export async function fetchActiveJobs() {
-  if (projectId === 'vw5rjq9a' && !process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
-    // Avoid crashing if credentials are omitted using dummy data project
-    return [];
-  }
-  
   try {
     const jobs = await client.fetch(`
       *[_type == "jobPosting" && isActive == true] | order(postedAt desc) {

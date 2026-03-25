@@ -57,7 +57,7 @@ export default async function CareersPage() {
           </div>
         ) : (
           <div className="py-16 px-6 text-center border border-black bg-white w-full max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">Şu anda aktif ilan bulunmuyor</h3>
+            <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">İlan yok</h3>
             <p className="text-base font-medium opacity-80 mb-6">
               Yeni yetenekler ve fırsatlar için bizi takip etmeye devam edin.
             </p>
