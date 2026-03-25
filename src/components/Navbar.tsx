@@ -8,6 +8,7 @@ const navLinks = [
   { label: "About", href: "#vision" },
   { label: "Programs", href: "#programs" },
   { label: "Partners", href: "#partners" },
+  { label: "Kariyer", href: "/careers" },
   { label: "Bülten", href: "/newsletter" },
   { label: "Contact", href: "#contact" },
 ];

@@ -29,8 +29,10 @@ export default function Footer() {
                 { label: "About", href: "#vision" },
                 { label: "Programs", href: "#programs" },
                 { label: "Partners", href: "#partners" },
+                { label: "Kariyer", href: "/careers" },
                 { label: "Bülten", href: "/newsletter" },
                 { label: "LinkedIn", href: "https://linkedin.com" },
+                { label: "Manage Jobs", href: "https://sanity.io/manage" },
               ].map((link) => (
                 <li key={link.label}>
                   <a
