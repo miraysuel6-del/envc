@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function JobDetailPage({ params }: { params: { slug: string } }) {
-  const job = await fetchJobBySlug(params.slug)
+export default async function JobDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const job = await fetchJobBySlug(slug)
 
   if (!job) {
     notFound()
