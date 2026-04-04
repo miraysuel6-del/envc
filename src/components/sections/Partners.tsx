@@ -1,16 +1,11 @@
 import Section from "@/components/Section";
 
 const partners = [
-  "Sequoia Capital",
-  "Boğaziçi University",
-  "500 Global",
-  "Earlybird VC",
-  "Endeavor Turkey",
-  "Koç Holdings",
-  "Sabancı Ventures",
-  "Startups.watch",
-  "Techstars",
-  "Y Combinator",
+  "212",
+  "Revo Capital",
+  "e2vc",
+  "Tibas Ventures",
+  "Metis Ventures",
 ];
 
 export default function Partners() {

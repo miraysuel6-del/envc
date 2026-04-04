@@ -14,8 +14,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold tracking-tight mb-4">ENVC</h3>
             <p className="text-sm leading-relaxed text-white/60 max-w-xs">
-              Entrepreneurship &amp; VC Boğaziçi — bridging academic talent,
-              founders, and capital since Boğaziçi University.
+              Entrepreneurship and VC Boğaziçi — the premier platform connecting
+              Turkey's brightest technical minds with the capital and mentorship
+              to build world-class companies.
             </p>
           </div>
 
@@ -49,10 +50,11 @@ export default function Footer() {
           {/* Newsletter */}
           <div>
             <h4 className="text-xs font-semibold tracking-widest uppercase text-white/40 mb-4">
-              Stay Updated
+              Stay Informed
             </h4>
             <p className="text-sm text-white/60 mb-4">
-              Get notified about upcoming events and opportunities.
+              Join 800+ founders, investors, and students in our community
+              newsletter. Get updates on events, deals &amp; opportunities.
             </p>
             <form
               onSubmit={(e) => {
@@ -82,8 +84,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} ENVC Boğaziçi. All rights reserved.</p>
-          <p>Boğaziçi University, Bebek, Istanbul, Turkey</p>
+          <p>&copy; {new Date().getFullYear()} Entrepreneurship and VC Boğaziçi. All rights reserved.</p>
+          <p>Boğaziçi University Student Community</p>
         </div>
       </div>
     </footer>

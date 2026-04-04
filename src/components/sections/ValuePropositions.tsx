@@ -34,19 +34,19 @@ const tabs = [
     icon: Lightbulb,
     items: [
       {
-        title: "Alumni Mentorship",
+        title: "Mentorship from Alumni",
         description:
-          "Get hands-on guidance from Boğaziçi alumni who have built and scaled companies — from first customer to Series A and beyond.",
+          "Access founders who've built and exited, now giving back to the next generation.",
       },
       {
-        title: "Peer Networking",
+        title: "Peer Network",
         description:
-          "Join a tight-knit community of ambitious builders. Trade insights, form teams, and find co-founders who share your drive.",
+          "Join a tight-knit cohort of fellow founders tackling hard problems alongside you.",
       },
       {
         title: "Early-Stage Visibility",
         description:
-          "Showcase your startup at our Demo Days and get direct exposure to active angel investors and VC partners.",
+          "Present at Demo Day to our curated investor audience and get on the radar.",
       },
     ],
   },
@@ -58,17 +58,17 @@ const tabs = [
       {
         title: "VC & Startup Internships",
         description:
-          "Gain real-world experience at venture capital firms and high-growth startups through our curated placement program.",
+          "Secured placements at partner VC firms and portfolio companies.",
       },
       {
-        title: "Workshops & Skill Building",
+        title: "Workshops & Bootcamps",
         description:
-          "Attend expert-led sessions on financial modeling, product thinking, cap tables, and the venture ecosystem.",
+          "Technical due diligence, startup finance, and founder storytelling — practical skills.",
       },
       {
         title: "Career Pathways",
         description:
-          "Whether you want to join a startup, launch your own, or enter venture capital — we help you chart the path.",
+          "Structured mentorship programmes and alumni introductions for your next big move.",
       },
     ],
   },
